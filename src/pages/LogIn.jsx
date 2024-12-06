@@ -13,21 +13,21 @@ const Login = () => {
    <div className="h-[606px] overflow-hidden">
    <img className="object-contain"  src={signupimage} alt="" />
    </div>
-    <div className="flex flex-col font-Poppis  gap-[38px]">
+    <div className="flex text-nowrap flex-col font-Poppis  gap-[38px]">
       <div className="flex flex-col gap-[10px] font-Inter text-black"> <h1 className="text-[3.6rem] font-[500]">Log in to Exclusive</h1> <p className="text-[1.6rem] font-[400]">Enter your details below</p></div>
       <div className="flex flex-col gap-[24px]">
 
         <input type="text" className="border-b text-[1.6rem] font-[400] border-gray-600 py-3" placeholder="Email or Phone Number" />
         <input type="text" className="border-b text-[1.6rem] font-[400] border-gray-600 py-3" placeholder="Password" />
       </div>
-      <div className="text-[1.6rem] flex flex-col gap-6 font-[500]">
-        <button className="bg-[#DB4444] text-tfa py-4 w-full">
-         Log in
+      <div className="text-[1.6rem] items-center justify-between flex gap-6 font-[500]">
+        <button className="bg-[#DB4444] rounded-lg text-tfa py-4 w-full">
+          Log in
         </button>
-        
-        <div className="mt-4 text-center font-[500]">
-           <span className="underline">Log in</span>
-        </div>
+       
+          <h2 className="font-[400] text-[#DB4444]">Forget Password</h2>
+       
+      
       </div>
     </div>
   </div>
