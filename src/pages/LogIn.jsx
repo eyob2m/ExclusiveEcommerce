@@ -2,7 +2,7 @@ import Footer from "../components/Footer"
 import Header from "../components/Header"
 import PreHeader from "../components/PreHeader"
 import signupimage from '../assets/dl.beatsnoop 1.png'
-import { GrGoogle } from "react-icons/gr"
+
 const Login = () => {
   return (
     <div>
