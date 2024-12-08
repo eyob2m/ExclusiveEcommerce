@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import PreHeader from "../components/PreHeader";
+
 import { AiFillStar} from "react-icons/ai";
 import { MdDeleteOutline } from "react-icons/md";
 import { IoEyeOutline } from "react-icons/io5";
@@ -65,9 +63,7 @@ const WishList = () => {
       }, []);
   return (
     <div>
-      <PreHeader />
-
-      <Header />
+     
       <div className="flex flex-col py-20 font-Poppis px-[100px] gap-28">
         <section>
           <div className="flex font-[400] items-center text-[2rem] justify-between">
@@ -108,7 +104,7 @@ const WishList = () => {
             })}
          </div>
       </div>
-      <Footer />
+   
     </div>
   );
 };

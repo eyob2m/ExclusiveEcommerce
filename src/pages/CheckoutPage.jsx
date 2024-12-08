@@ -1,6 +1,4 @@
-import Footer from "../components/Footer"
-import Header from "../components/Header"
-import PreHeader from "../components/PreHeader"
+
 import pc from "../icons/g27cq4-500x500 1.png";
 import js from "../icons/g92-2-500x500 1.png";
 import visa from "../icons/Visa.png";
@@ -11,9 +9,7 @@ import bk from "../icons/Bkash.png";
 const CheckoutPage = () => {
   return (
     <div>
-      <PreHeader />
-
-      <Header />
+    
       <div className="flex  text-[1.4rem]  font-[400] font-Poppis flex-col py-20 px-[100px] mb-10 gap-16">
       <div className="flex gap-3">
           <p className="opacity-75"> Home / My Account / Product / View Cart / </p>
@@ -120,7 +116,7 @@ const CheckoutPage = () => {
        
        </div>
       </div>
-      <Footer />
+  
     </div>
   )
 }

@@ -1,15 +1,11 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import PreHeader from "../components/PreHeader";
+
 import pc from "../icons/g27cq4-500x500 1.png";
 import js from "../icons/g92-2-500x500 1.png";
 
 const Cart = () => {
   return (
     <div>
-      <PreHeader />
-
-      <Header />
+  
       <div className="flex  font-[400] font-Poppis flex-col py-20 px-[100px] mb-10 gap-28">
         <div className="flex gap-3 text-[1.4rem]">
           <p className="opacity-75"> Home / </p>
@@ -103,7 +99,7 @@ const Cart = () => {
           </div>
         </section>
       </div>
-      <Footer />
+    
     </div>
   );
 };

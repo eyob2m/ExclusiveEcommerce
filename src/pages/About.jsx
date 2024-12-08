@@ -1,6 +1,4 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import PreHeader from "../components/PreHeader";
+
 import deliv from "../assets/icon-delivery (1).png";
 import custserv from "../assets/Icon-Customer service.png";
 import secure from "../icons/Icon-secure.png";
@@ -19,9 +17,7 @@ import Slider from "react-slick";
 const About = () => {
   return (
     <div>
-      <PreHeader />
-
-      <Header />
+  
       <div className="flex  font-[400] font-Poppis flex-col py-20 mb-10 gap-40">
         <div className="flex gap-3 px-[100px]   text-[1.4rem]">
           <p className="opacity-75"> Home / </p>
@@ -195,7 +191,7 @@ const About = () => {
           </div>
         </section>
       </div>
-      <Footer />
+   
     </div>
   );
 };

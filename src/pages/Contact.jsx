@@ -1,14 +1,10 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import PreHeader from "../components/PreHeader";
+
 import phone from "../icons/Vector (1).png";
 import mail from "../icons/icons-mail.png";
 const Contact = () => {
   return (
     <div>
-      <PreHeader />
-
-      <Header />
+    
       <div className="flex  font-[400] font-Poppis flex-col py-20 px-[100px] ">
         <div className="flex gap-3  text-[1.4rem]">
           <p className="opacity-75"> Home / </p>
@@ -90,7 +86,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <Footer />
+  
     </div>
   );
 };

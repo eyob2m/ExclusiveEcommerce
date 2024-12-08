@@ -1,7 +1,6 @@
+/* eslint-disable react/prop-types */
 import { GiRecycle } from "react-icons/gi"; 
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import PreHeader from "../components/PreHeader";
+
 import main from "../icons/image 63.png";
 import i1 from "../icons/image 57.png";
 import i2 from "../icons/image 58.png";
@@ -13,51 +12,10 @@ import { GrDeliver } from "react-icons/gr";
 import SectionIntro from "../components/SectionIntro";
 import Slider from "react-slick";
 import { useEffect, useState } from "react";
-import { AiFillStar, AiOutlineEye, AiOutlineHeart } from "react-icons/ai";
+import { MainCard } from "../components/Cards";
 
 const ProductDetail = () => {
-      const MainCard = ({ discount, image, title, price, netprice, stars }) => {
-    return (
-      <div className="item mx-6 flex flex-col h-[350px] w-[270px]">
-        <div className="p-10 relative bg-[#F5F5F5] rounded-md">
-          <div className="w-[190px] h-[180px]">
-            <img className="object-contain w-full h-full" src={image} alt="" />
-          </div>
-          <div className="absolute top-4 left-4 font-Poppis bg-[#DB4444] text-white py-1 rounded-md px-3 font-[400] text-[1.2rem ]">
-            {" "}
-            {discount}
-          </div>
-          <div className="absolute  top-4 right-4 font-Poppis  text-black py-1 rounded-md px-3 font-[400] text-[1.2rem ]">
-            <div className="w-[24px] h-[24px] bg-white rounded-full">
-              <AiOutlineHeart className="text-3xl" />
-            </div>
-            <div className="w-[24px] h-[24px] bg-white rounded-full">
-              <AiOutlineEye className="text-3xl" />
-            </div>
-          </div>
-        </div>
-        <div className="flex font-Poppis flex-col gap-2">
-          <h1 className="font-Poppis font-[500] text-[1.6rem]">{title}</h1>
-          <div className="flex gap-[12px] text-[1.6rem] ">
-            <h1 className="text-[#DB4444]">{netprice}</h1>{" "}
-            <span className="text-[#000000] opacity-50 line-through">
-              {price}
-            </span>
-          </div>
-          <div className="flex gap-[12px] items-center text-[1.6rem] ">
-            <div className="flex gap-1">
-              <AiFillStar className="text-[#FFAD33]" />
-              <AiFillStar className="text-[#FFAD33]" />
-              <AiFillStar className="text-[#FFAD33]" />
-              <AiFillStar className="text-[#FFAD33]" />
-            </div>{" "}
-            <span className="text-[#000000] text-[1.4rem] opacity-70">
-              ({stars})
-            </span>
-          </div>
-        </div>
-      </div>
-    );}
+  
     const [items, setitems] = useState([]);
 
     useEffect(() => {
@@ -72,9 +30,7 @@ const ProductDetail = () => {
       }, []);
   return (
     <div>
-      <PreHeader />
-
-      <Header />
+     
       <div className="flex  font-[400] font-Poppis flex-col py-20 px-[100px] mb-10 gap-28">
         <div className="flex gap-3 text-[1.4rem]">
           <p className="opacity-75"> Home / Gaming /</p>
@@ -83,7 +39,7 @@ const ProductDetail = () => {
 
         <section>
           <div>
-            <div className="flex">
+            <div className="flex gap-10">
               <div id="image" className="flex gap-8">
                 <div className="flex">
                   <div className="flex flex-col gap-4">
@@ -182,10 +138,10 @@ const ProductDetail = () => {
                   </div>
                 </div>
                 <div>
-            <div className="flex flex-col border border-black  rounded-xl">
-                        <div className="flex gap-6 p-5 items-center">
+            <div className="flex flex-col border border-black w-fit p-2  rounded-xl">
+                        <div className="flex gap-6 p-5 items-center ">
                             <GrDeliver size={"20px"} />
-                            <div className="flex gap-3 flex-col">
+                            <div className="flex gap-3  flex-col">
                                 <h1 className="font-Poppis font-[500] text-[1.6rem]">Free Delivery</h1>
                                 <h2 className="font-Poppis font-[500] text-[1.2rem]">Enter your postal code for Delivery Availability</h2>
                                 </div>  
@@ -194,8 +150,8 @@ const ProductDetail = () => {
                         <div className="flex gap-6 p-5 items-center ">
                           
                    <GiRecycle  size={"20px"}/>         <div className="flex gap-3 flex-col">
-                                <h1 className="font-Poppis font-[500] text-[1.6rem]">Free Delivery</h1>
-                                <h2 className="font-Poppis font-[500] text-[1.2rem]">Enter your postal code for Delivery Availability</h2>
+                                <h1 className="font-Poppis font-[500] text-[1.6rem]">Return Delivery</h1>
+                                <h2 className="font-Poppis font-[500] text-[1.2rem]">Free 30 Days Delivery Returns. Details</h2>
                                 </div>  
                         </div>
             </div>
@@ -208,6 +164,7 @@ const ProductDetail = () => {
         </section>
         <section>
         <SectionIntro color={"#DB4444"} title={"Related Item"} />
+        <div className="mt-20"></div>
         <Slider variableWidth slidesToScroll={1}>
               {items.map((i) => {
                 return (
@@ -225,7 +182,7 @@ const ProductDetail = () => {
             </Slider>
         </section>
       </div>
-      <Footer />
+   
     </div>
   );
 };

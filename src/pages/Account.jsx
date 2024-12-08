@@ -1,13 +1,8 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import PreHeader from "../components/PreHeader";
 
 const Account = () => {
   return (
     <div>
-      <PreHeader />
-
-      <Header />
+    
       <div className="flex  font-[400] font-Poppis flex-col py-20 px-[100px] mb-10 gap-28">
       <div className="flex justify-between text-[1.4rem]">
           <div className="flex gap-3"><p className="opacity-75"> Home / </p>
@@ -82,7 +77,7 @@ const Account = () => {
             </div>
         </div>
       </div>
-      <Footer />
+   
     </div>
   );
 };
