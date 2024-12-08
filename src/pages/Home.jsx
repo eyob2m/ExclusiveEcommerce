@@ -21,9 +21,10 @@ const Home = () => {
   const [items, setitems] = useState([]);
   const [cats, setcats] = useState([]);
   const [catsitem, setcatsitem] = useState([]);
-  const [selectedCat, setselectedCat] = useState("Phones");
+  const [selectedCat, setselectedCat] = useState("electronics");
   useEffect(() => {
     const ft = async () => {
+
       const res = await fetch("https://fakestoreapi.com/products");
 
       const data = await res.json();
@@ -37,8 +38,31 @@ const Home = () => {
       await setcats(resdata);
     };
     ft();
+    featchByCat('electronics')
   }, []);
   
+  const renderer2 = ({ days, hours, minutes, seconds }) => {
+    return (
+      <div className="flex gap-6">
+                <div className="flex h-[62px] w-[62px] flex-col font-Poppis font-[400] text-[1.1rem] justify-center items-center bg-white text-black rounded-full p-3">
+                  <h1 className="font-[600]">{hours}</h1>
+                  <h2>Hours</h2>
+                </div>
+                <div className="flex h-[62px] w-[62px] flex-col font-Poppis font-[400] text-[1.1rem] justify-center items-center bg-white text-black rounded-full p-3">
+                  <h1 className="font-[600]">{days}</h1>
+                  <h2>Days</h2>
+                </div>
+                <div className="flex h-[62px] w-[62px] flex-col font-Poppis font-[400] text-[1.1rem] justify-center items-center bg-white text-black rounded-full p-3">
+                  <h1 className="font-[600]">{minutes}</h1>
+                  <h2>Minutes</h2>
+                </div>
+                <div className="flex h-[62px] w-[62px] flex-col font-Poppis font-[400] text-[1.1rem] justify-center items-center bg-white text-black rounded-full p-3">
+                  <h1 className="font-[600]">{seconds}</h1>
+                  <h2>Seconds</h2>
+                </div>
+              </div>
+    ); }
+
   const CateList = ({ c }) => {
     return (
       <div
@@ -103,7 +127,10 @@ const Home = () => {
         </div>
       </div>
     );
+
+    
   };
+ 
   return (
     <div>
     
@@ -189,7 +216,7 @@ const Home = () => {
               <h1 className="font-Inter font-[600]  text-[3.6rem]">
                 Flash Sales
               </h1>
-              <Countdown date={Date.now() + 0} renderer={renderer} />
+              <Countdown date={Date.now() + 1000*60*60*24*4} renderer={renderer} />
             </div>
             <Slider variableWidth slidesToScroll={1}>
               {items.map((i) => {
@@ -287,24 +314,7 @@ const Home = () => {
               <h1 className=" font-Inter font-[600] text-[4.8rem]">
                 Enhance Your Music Experience
               </h1>
-              <div className="flex gap-6">
-                <div className="flex h-[62px] w-[62px] flex-col font-Poppis font-[400] text-[1.1rem] justify-center items-center bg-white text-black rounded-full p-3">
-                  <h1 className="font-[600]">23</h1>
-                  <h2>Hours</h2>
-                </div>
-                <div className="flex h-[62px] w-[62px] flex-col font-Poppis font-[400] text-[1.1rem] justify-center items-center bg-white text-black rounded-full p-3">
-                  <h1 className="font-[600]">05</h1>
-                  <h2>Days</h2>
-                </div>
-                <div className="flex h-[62px] w-[62px] flex-col font-Poppis font-[400] text-[1.1rem] justify-center items-center bg-white text-black rounded-full p-3">
-                  <h1 className="font-[600]">59</h1>
-                  <h2>Minutes</h2>
-                </div>
-                <div className="flex h-[62px] w-[62px] flex-col font-Poppis font-[400] text-[1.1rem] justify-center items-center bg-white text-black rounded-full p-3">
-                  <h1 className="font-[600]">35</h1>
-                  <h2>Seconds</h2>
-                </div>
-              </div>
+             <Countdown renderer={renderer2} date={Date.now() + 1000*60*60*24*4}/>
               <button className="bg-[#00FF66] my-10 text-tfa text-[1.5rem] rounded-lg py-4 w-fit px-10">
                 Buy Now!
               </button>

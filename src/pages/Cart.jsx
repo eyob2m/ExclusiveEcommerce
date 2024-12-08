@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import pc from "../icons/g27cq4-500x500 1.png";
 import js from "../icons/g92-2-500x500 1.png";
 
@@ -92,9 +93,9 @@ const Cart = () => {
                 <h1>Total:</h1>
                 <h1>$1750</h1>
               </div>
-              <button className="mb-5 w-fit self-center bg-[#DB4444] text-white border px-20 py-5  rounded-lg ">
-                Update Cart
-              </button>
+              <Link to={'/checkout'}>    <button className="mb-5 w-fit self-center bg-[#DB4444] text-white border px-20 py-5  rounded-lg ">
+              Procees to checkout
+              </button></Link>
             </div>
           </div>
         </section>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const MainCard = ({ id,discount, image, title, price, netprice, stars }) => {
     return (
-     <Link to={`product/${id}`}>
+     <Link to={`/product/${id}`}>
       <div className="item mx-6 flex flex-col h-[350px] w-[270px]">
         <div className="p-10 relative bg-[#F5F5F5] rounded-md">
           <div className="w-[190px] h-[180px]">
@@ -17,10 +17,10 @@ export const MainCard = ({ id,discount, image, title, price, netprice, stars }) 
             {discount}
           </div>}
           <div className="absolute  top-4 right-4 font-Poppis  text-black py-1 rounded-md px-3 font-[400] text-[1.2rem ]">
-            <div className="w-[24px] h-[24px] bg-white rounded-full">
+            <div className="w-[24px] flex items-center justify-center h-[24px] bg-white rounded-full">
               <AiOutlineHeart className="text-3xl" />
             </div>
-            <div className="w-[24px] h-[24px] bg-white rounded-full">
+            <div className="w-[24px] h-[24px] flex items-center justify-center bg-white rounded-full">
               <AiOutlineEye className="text-3xl" />
             </div>
           </div>
@@ -59,7 +59,7 @@ export const MainCard = ({ id,discount, image, title, price, netprice, stars }) 
               </div>
     
               <div className="absolute  top-4 right-4 font-Poppis  text-black py-1 rounded-md px-3 font-[400] text-[1.2rem ]">
-                <div className="w-[24px] h-[24px] bg-white rounded-full">
+                <div className="w-[24px] flex items-center justify-center h-[24px] bg-white rounded-full">
                 {
                     wishlist ?  <MdDeleteOutline className="text-3xl" /> :<IoEyeOutline className="text-3xl" /> 
                 }
@@ -106,10 +106,10 @@ export const MainCard = ({ id,discount, image, title, price, netprice, stars }) 
                 {stat}
               </div>
               <div className="absolute  top-4 right-4 font-Poppis  text-black py-1 rounded-md px-3 font-[400] text-[1.2rem ]">
-                <div className="w-[24px] h-[24px] bg-white rounded-full">
+                <div className="w-[24px] flex items-center justify-center h-[24px] bg-white rounded-full">
                   <AiOutlineHeart className="text-3xl" />
                 </div>
-                <div className="w-[24px] h-[24px] bg-white rounded-full">
+                <div className="w-[24px] flex items-center justify-center h-[24px] bg-white rounded-full">
                   <AiOutlineEye className="text-3xl" />
                 </div>
               </div>

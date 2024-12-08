@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 const Header = ({page}) => {
 
  
-  const [loggedIn] = useState(true);
+  const [loggedIn] = useState(false);
   const [profileMenu, setprofileMenu] = useState(false);
   
   return (
@@ -43,9 +43,9 @@ const Header = ({page}) => {
           <BiSearch />
         </div>
 
-        <TiHeartOutline className="cursor-pointer" />
+        <Link to={'/wishlist'}> <TiHeartOutline className="cursor-pointer" /></Link>
         <div className="relative cursor-pointer">
-          <IoCartOutline className="cursor-pointer" />
+        <Link to={'/cart'}> <IoCartOutline className="cursor-pointer" /></Link> 
           {loggedIn && (
             <div className="w-[18px] h-[18px]  absolute   rounded-full text-white  -top-3 -right-3 flex items-center justify-center bg-red-500">
               <h2 className="text-[1.2rem] font-[400]">2</h2>
@@ -65,12 +65,12 @@ const Header = ({page}) => {
                   <li  className="cursor-pointer hover:opacity-45 duration-300 flex text-[1.4rem] gap-4 items-center">
         
                     <TiUserOutline className="text-[2.4rem]" />{" "}
-                    <p>Manage My Account</p>
+                    <Link to={'/account'}>  <p>Manage My Account</p> </Link>
                   </li>
                   <li  className="cursor-pointer hover:opacity-45 duration-300 flex text-[1.4rem] gap-4 items-center">
         
                     <IoBagHandleOutline className="text-[2.4rem]" />{" "}
-                    <p>My Order</p>
+                    <Link to={'/cart'}> <p>My Order</p> </Link>
                   </li>
                   <li  className="cursor-pointer hover:opacity-45 duration-300 flex text-[1.4rem] gap-4 items-center">
         

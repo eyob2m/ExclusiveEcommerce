@@ -17,6 +17,7 @@ const ProductDetail = () => {
   const [items, setitems] = useState([]);
 
   useEffect(() => {
+    window.scroll(0,0)
     const ft = async () => {
       const res = await fetch("https://fakestoreapi.com/products");
 
@@ -27,7 +28,7 @@ const ProductDetail = () => {
       await setproduct(datap);
     };
     ft();
-  }, []);
+  }, [id]);
   return (
     <div>
       <div className="flex  font-[400] font-Poppis flex-col py-20 px-[100px] mb-10 gap-28">
@@ -42,22 +43,22 @@ const ProductDetail = () => {
               <div id="image" className="flex gap-8">
                 <div className="flex">
                   <div className="flex flex-col gap-4">
-                    <div className="bg-[#F5F5F5] w-[170px] h-[138px] p-8 rounded-md">
-                      <img src={product.image} alt="" />
+                    <div className="bg-[#F5F5F5] w-[170px] h-[138px] p-2 rounded-md">
+                      <img src={product.image} className="object-contain w-full h-full" alt="" />
                     </div>
-                    <div className="bg-[#F5F5F5] w-[170px] h-[138px] p-8 rounded-md">
-                      <img src={product.image} alt="" />
+                    <div className="bg-[#F5F5F5] w-[170px] h-[138px] p-2 rounded-md">
+                      <img src={product.image} className="object-contain w-full h-full" alt="" />
                     </div>{" "}
-                    <div className="bg-[#F5F5F5] w-[170px] h-[138px] p-8 rounded-md">
-                      <img src={product.image} alt="" />
+                    <div className="bg-[#F5F5F5] w-[170px] h-[138px] p-2 rounded-md">
+                      <img src={product.image} className="object-contain w-full h-full" alt="" />
                     </div>{" "}
-                    <div className="bg-[#F5F5F5] w-[170px] h-[138px] p-8 rounded-md">
-                      <img src={product.image} alt="" />
+                    <div className="bg-[#F5F5F5] w-[170px] h-[138px] p-2 rounded-md">
+                      <img src={product.image} className="object-contain w-full h-full"  alt="" />
                     </div>
                   </div>
                 </div>
                 <div className="bg-[#F5F5F5] p-20 w-[500px] h-[600px] rounded-md">
-                  <img src={product.image} alt="" />
+                  <img className="object-contain w-full h-full" src={product.image} alt="" />
                 </div>
               </div>
               <div className="flex gap-5  justify-between flex-col">
@@ -197,6 +198,7 @@ const ProductDetail = () => {
                   key={i.id}
                   discount={Math.floor(Math.random() * 101) + "%"}
                   image={i.image}
+                  id={i.id}
                   title={i.title}
                   price={i.price + 20}
                   netprice={i.price}
