@@ -33,7 +33,7 @@ const Home = () => {
       );
 
       const resdata = await rescat.json();
-      console.log(resdata);
+     
       await setcats(resdata);
     };
     ft();
@@ -196,6 +196,7 @@ const Home = () => {
                 return (
                   <MainCard
                     key={i.id}
+                    id={i.id}
                     discount={Math.floor(Math.random() * 101) + "%"}
                     image={i.image}
                     title={i.title}
@@ -231,6 +232,7 @@ const Home = () => {
               return (
                 <MainCard 
                   key={i.id}
+                  id={i.id}
                   image={i.image}
                   title={i.title}
                   price={i.price + 20}
@@ -265,6 +267,7 @@ const Home = () => {
               return (
                 <MainCard
                   key={i.id}
+                  id={i.id}
                   image={i.image}
                   title={i.title}
                   price={i.price + 20}
@@ -323,6 +326,7 @@ const Home = () => {
                   return (
                     <MainCard
                       key={i.id}
+                      id={i.id}
                       discount={"New"}
                       image={i.image}
                       title={i.title}
@@ -338,6 +342,7 @@ const Home = () => {
                   return (
                     <MainCard
                       key={i.id}
+                      id={i.id}
                       stat={"New"}
                       image={i.image}
                       title={i.title}

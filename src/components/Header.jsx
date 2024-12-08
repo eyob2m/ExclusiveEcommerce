@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { GrStarOutline } from "react-icons/gr";
@@ -8,13 +9,13 @@ import {
 } from "react-icons/io5";
 import { RiProfileLine } from "react-icons/ri";
 import { TiCancelOutline, TiHeartOutline, TiUserOutline } from "react-icons/ti";
+import { Link } from "react-router-dom";
 
 
 
-const Header = () => {
+const Header = ({page}) => {
 
-  let page = "contact"
-
+ 
   const [loggedIn] = useState(true);
   const [profileMenu, setprofileMenu] = useState(false);
   
@@ -23,10 +24,10 @@ const Header = () => {
       <div className="flex justify-between gap-[190px]  items-center">
         <h1 className="text-[2.4rem] font-[700] cursor-pointer">Exclusive</h1>
         <ul className="flex gap-[48px] text-[1.6rem] font-Poppis font-[400]">
-          <li className={`${page=="home" && "before:w-full"} relative cursor-pointer before:absolute before:bottom-0 before:w-[0%] before:duration-200 hover:before:w-[100%] before:h-1 before:bg-gray-800`} >Home</li>
-          <li className={`${page=="contact" && "before:w-full"} relative cursor-pointer before:absolute before:bottom-0 before:w-[0%] before:duration-200 hover:before:w-[100%] before:h-1 before:bg-gray-800`}>Contact</li>
-          <li className={`${page=="about" && "before:w-full"} relative cursor-pointer before:absolute before:bottom-0 before:w-[0%] before:duration-200 hover:before:w-[100%] before:h-1 before:bg-gray-800`}>About</li>
-          <li className={`${page=="signup" && "before:w-full"} relative cursor-pointer before:absolute before:bottom-0 before:w-[0%] before:duration-200 hover:before:w-[100%] before:h-1 before:bg-gray-800`}>Sign up</li>
+          <Link to={'/'}> <li  className={`${page=="home" && "before:w-full"} relative cursor-pointer before:absolute before:bottom-0 before:w-[0%] before:duration-200 hover:before:w-[100%] before:h-1 before:bg-gray-800`} >Home</li></Link>
+          <Link to={'/contact'}> <li  className={`${page=="contact" && "before:w-full"} relative cursor-pointer before:absolute before:bottom-0 before:w-[0%] before:duration-200 hover:before:w-[100%] before:h-1 before:bg-gray-800`}>Contact</li></Link>
+          <Link to={'/about'}> <li  className={`${page=="about" && "before:w-full"} relative cursor-pointer before:absolute before:bottom-0 before:w-[0%] before:duration-200 hover:before:w-[100%] before:h-1 before:bg-gray-800`}>About</li></Link>
+          <Link to={'/signup'}> <li  className={`${page=="signup" && "before:w-full"} relative cursor-pointer before:absolute before:bottom-0 before:w-[0%] before:duration-200 hover:before:w-[100%] before:h-1 before:bg-gray-800`}>Sign up</li></Link>
         </ul>
       </div>
       <div className="flex items-center  gap-[24px] text-[2.4rem]">

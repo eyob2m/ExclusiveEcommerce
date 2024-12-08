@@ -1,11 +1,6 @@
+import { BsStarHalf } from "react-icons/bs";
 /* eslint-disable react/prop-types */
-import { GiRecycle } from "react-icons/gi"; 
-
-import main from "../icons/image 63.png";
-import i1 from "../icons/image 57.png";
-import i2 from "../icons/image 58.png";
-import i3 from "../icons/image 61.png";
-import i4 from "../icons/image 59.png";
+import { GiRecycle } from "react-icons/gi";
 import { BsStarFill } from "react-icons/bs";
 import { TiHeartOutline } from "react-icons/ti";
 import { GrDeliver } from "react-icons/gr";
@@ -13,28 +8,32 @@ import SectionIntro from "../components/SectionIntro";
 import Slider from "react-slick";
 import { useEffect, useState } from "react";
 import { MainCard } from "../components/Cards";
+import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
-  
-    const [items, setitems] = useState([]);
+  const { id } = useParams();
 
-    useEffect(() => {
-        const ft = async () => {
-          const res = await fetch("https://fakestoreapi.com/products");
-    
-          const data = await res.json();
-          await setitems(data);
-         
-        };
-        ft();
-      }, []);
+  const [product, setproduct] = useState({});
+  const [items, setitems] = useState([]);
+
+  useEffect(() => {
+    const ft = async () => {
+      const res = await fetch("https://fakestoreapi.com/products");
+
+      const data = await res.json();
+      await setitems(data);
+      const resp = await fetch(`https://fakestoreapi.com/products/${id}`);
+      const datap = await resp.json();
+      await setproduct(datap);
+    };
+    ft();
+  }, []);
   return (
     <div>
-     
       <div className="flex  font-[400] font-Poppis flex-col py-20 px-[100px] mb-10 gap-28">
         <div className="flex gap-3 text-[1.4rem]">
-          <p className="opacity-75"> Home / Gaming /</p>
-          <span> Havic HV G-92 Gamepad</span>
+          <p className="opacity-75"> Home / {product.category}/</p>
+          <span> {product.title}</span>
         </div>
 
         <section>
@@ -44,42 +43,57 @@ const ProductDetail = () => {
                 <div className="flex">
                   <div className="flex flex-col gap-4">
                     <div className="bg-[#F5F5F5] w-[170px] h-[138px] p-8 rounded-md">
-                      <img src={i1} alt="" />
+                      <img src={product.image} alt="" />
                     </div>
                     <div className="bg-[#F5F5F5] w-[170px] h-[138px] p-8 rounded-md">
-                      <img src={i2} alt="" />
+                      <img src={product.image} alt="" />
                     </div>{" "}
                     <div className="bg-[#F5F5F5] w-[170px] h-[138px] p-8 rounded-md">
-                      <img src={i3} alt="" />
+                      <img src={product.image} alt="" />
                     </div>{" "}
                     <div className="bg-[#F5F5F5] w-[170px] h-[138px] p-8 rounded-md">
-                      <img src={i4} alt="" />
+                      <img src={product.image} alt="" />
                     </div>
                   </div>
                 </div>
                 <div className="bg-[#F5F5F5] p-20 w-[500px] h-[600px] rounded-md">
-                  <img src={main} alt="" />
+                  <img src={product.image} alt="" />
                 </div>
               </div>
               <div className="flex gap-5  justify-between flex-col">
                 <div className="flex flex-col gap-4" id="title">
-                  <h1 className="text-[2.4rem]  font-Inter font-[600]">Havic HV G-92 Gamepad</h1>
+                  <h1 className="text-[2.4rem]  font-Inter font-[600]">
+                    {product.title}
+                  </h1>
                   <div className="flex gap-6">
                     <div className="flex gap-2">
                       {" "}
-                      <BsStarFill size={"15px"} className="text-yellow-300" />{" "}
-                      <BsStarFill size={"15px"} className="text-yellow-300" />{" "}
+                      <BsStarFill size={"15px"} className="text-yellow-300" />
+                      <BsStarFill
+                        size={"15px"}
+                        className="text-yellow-300"
+                      />{" "}
                       <BsStarFill size={"15px"} className="text-yellow-300" />{" "}
                       <BsStarFill size={"15px"} className="text-yellow-300" />
+                      <BsStarHalf  size={"15px"} className="text-yellow-300"
+                      />
                     </div>
-                    <h1 className="font-Poppis font-[400] text-[1.4rem]">(150 Reviews)</h1>
-                    <h1 className="font-Poppis font-[400] text-[1.4rem] text-[#00FF66]">IN Stock</h1>
+                    <h1 className="font-Poppis font-[400] text-[1.4rem]">
+                      {product?.rating?.rate ? product.rating.rate : null}
+                    </h1>
+                    <h1 className="font-Poppis font-[400] text-[1.4rem]">
+                      ({product?.rating?.count ? product.rating.count : null}{" "}
+                      Reviews)
+                    </h1>
+                    <h1 className="font-Poppis font-[400] text-[1.4rem] text-[#00FF66]">
+                      IN Stock
+                    </h1>
                   </div>
-                  <h1 className="font-Inter font-[400] text-[2.4rem]">$192.00</h1>
+                  <h1 className="font-Inter font-[400] text-[2.4rem]">
+                    ${product.price}
+                  </h1>
                   <p className="font-Poppis font-[400] text-[1.4rem]">
-                    PlayStation 5 Controller Skin High quality vinyl with air
-                    channel adhesive for easy bubble free install & mess free
-                    removal Pressure sensitive.
+                    {product.description}
                   </p>
                 </div>
                 <div id="color" className="flex gap-8">
@@ -123,11 +137,16 @@ const ProductDetail = () => {
                     id="qantity"
                     className="flex  w-[35%] items-center  gap-4"
                   >
-                   
                     <div className="flex rounded-md border-solid items-center text-white  border w-full border-black">
-                      <button className="bg-[#DB4444]  text-[2rem] flex-1">-</button>
-                      <h2 className="flex-1 text-black text-[2rem] text-center">1</h2>
-                      <button className="bg-[#DB4444] text-[2rem]  flex-1 ">+</button>
+                      <button className="bg-[#DB4444]  text-[2rem] flex-1">
+                        -
+                      </button>
+                      <h2 className="flex-1 text-black text-[2rem] text-center">
+                        1
+                      </h2>
+                      <button className="bg-[#DB4444] text-[2rem]  flex-1 ">
+                        +
+                      </button>
                     </div>
                   </div>
                   <button className=" bg-[#DB4444] text-[1.6rem] text-tfa py-4 w-fit px-4 rounded-lg">
@@ -138,51 +157,56 @@ const ProductDetail = () => {
                   </div>
                 </div>
                 <div>
-            <div className="flex flex-col border border-black w-fit p-2  rounded-xl">
-                        <div className="flex gap-6 p-5 items-center ">
-                            <GrDeliver size={"20px"} />
-                            <div className="flex gap-3  flex-col">
-                                <h1 className="font-Poppis font-[500] text-[1.6rem]">Free Delivery</h1>
-                                <h2 className="font-Poppis font-[500] text-[1.2rem]">Enter your postal code for Delivery Availability</h2>
-                                </div>  
-                        </div>
-                        <hr className="h-[2px] opacity-70 bg-black"/>
-                        <div className="flex gap-6 p-5 items-center ">
-                          
-                   <GiRecycle  size={"20px"}/>         <div className="flex gap-3 flex-col">
-                                <h1 className="font-Poppis font-[500] text-[1.6rem]">Return Delivery</h1>
-                                <h2 className="font-Poppis font-[500] text-[1.2rem]">Free 30 Days Delivery Returns. Details</h2>
-                                </div>  
-                        </div>
-            </div>
-        </div>
+                  <div className="flex flex-col border border-black w-fit p-2  rounded-xl">
+                    <div className="flex gap-6 p-5 items-center ">
+                      <GrDeliver size={"20px"} />
+                      <div className="flex gap-3  flex-col">
+                        <h1 className="font-Poppis font-[500] text-[1.6rem]">
+                          Free Delivery
+                        </h1>
+                        <h2 className="font-Poppis font-[500] text-[1.2rem]">
+                          Enter your postal code for Delivery Availability
+                        </h2>
+                      </div>
+                    </div>
+                    <hr className="h-[2px] opacity-70 bg-black" />
+                    <div className="flex gap-6 p-5 items-center ">
+                      <GiRecycle size={"20px"} />{" "}
+                      <div className="flex gap-3 flex-col">
+                        <h1 className="font-Poppis font-[500] text-[1.6rem]">
+                          Return Delivery
+                        </h1>
+                        <h2 className="font-Poppis font-[500] text-[1.2rem]">
+                          Free 30 Days Delivery Returns. Details
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              
             </div>
-
           </div>
         </section>
         <section>
-        <SectionIntro color={"#DB4444"} title={"Related Item"} />
-        <div className="mt-20"></div>
-        <Slider variableWidth slidesToScroll={1}>
-              {items.map((i) => {
-                return (
-                  <MainCard
-                    key={i.id}
-                    discount={Math.floor(Math.random() * 101) + "%"}
-                    image={i.image}
-                    title={i.title}
-                    price={i.price + 20}
-                    netprice={i.price}
-                    stars={i.rating.count}
-                  />
-                );
-              })}
-            </Slider>
+          <SectionIntro color={"#DB4444"} title={"Related Item"} />
+          <div className="mt-20"></div>
+          <Slider variableWidth slidesToScroll={1}>
+            {items.map((i) => {
+              return (
+                <MainCard
+                  key={i.id}
+                  discount={Math.floor(Math.random() * 101) + "%"}
+                  image={i.image}
+                  title={i.title}
+                  price={i.price + 20}
+                  netprice={i.price}
+                  stars={i.rating.count}
+                />
+              );
+            })}
+          </Slider>
         </section>
       </div>
-   
     </div>
   );
 };
