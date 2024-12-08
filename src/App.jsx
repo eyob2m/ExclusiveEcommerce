@@ -1,5 +1,6 @@
 
 import './index.css'
+import About from './pages/About'
 import Account from './pages/Account'
 import Cart from './pages/Cart'
 import CheckoutPage from './pages/CheckoutPage'
@@ -10,7 +11,7 @@ import WishList from './pages/WishList'
 const App = () => {
 
   return (
-   <Account />
+   <About />
   )
 }
 
