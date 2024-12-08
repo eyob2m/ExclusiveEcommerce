@@ -8,12 +8,6 @@ import Header from "../components/Header";
 import PreHeader from "../components/PreHeader";
 import iphone from "../assets/1200px-Apple_gray_logo 1.png";
 import prom from "../assets/JBL_BOOMBOX_2_HERO_020_x1 (1) 1.png";
-import camera from "../icons/Category-Camera.png";
-import cellp from "../icons/Category-CellPhone.png";
-import gamepad from "../icons/Category-Gamepad.png";
-import hphone from "../icons/Category-Headphone.png";
-import watch from "../icons/Category-SmartWatch.png";
-import comp from "../icons/Category-Computer.png";
 
 import deliv from "../assets/icon-delivery (1).png";
 import custserv from "../assets/Icon-Customer service.png";
