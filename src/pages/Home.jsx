@@ -27,30 +27,46 @@ import Countdown from "react-countdown";
 import { useEffect, useState } from "react";
 
 const Home = () => {
-  const cats = [
-    { img: cellp, title: "Phones" },
-    { img: comp, title: "Computers" },
-    { img: watch, title: "SmartWatch" },
-    { img: camera, title: "Camera" },
-    { img: hphone, title: "HeadPhone" },
-    { img: gamepad, title: "Gamepad" },
-  ];
+  // const cats = [
+  //   { img: cellp, title: "Phones" },
+  //   { img: comp, title: "Computers" },
+  //   { img: watch, title: "SmartWatch" },
+  //   { img: camera, title: "Camera" },
+  //   { img: hphone, title: "HeadPhone" },
+  //   { img: gamepad, title: "Gamepad" },
+  // ];
   const [items, setitems] = useState([]);
+  const [cats, setcats] = useState([]);
+  const [catsitem, setcatsitem] = useState([]);
+
+  const [selectedCat, setselectedCat] = useState("Phones");
   useEffect(() => {
     const ft = async () => {
       const res = await fetch("https://fakestoreapi.com/products");
+
       const data = await res.json();
-      setitems(data);
+      await setitems(data);
+      const rescat = await fetch(
+        "https://fakestoreapi.com/products/categories"
+      );
+
+      const resdata = await rescat.json();
+      console.log(resdata);
+      await setcats(resdata);
     };
     ft();
   }, []);
-  const CateList = ({ title, img }) => {
+  const CateList = ({ c }) => {
     return (
-      <div className="flex justify-between">
-        <div className="flex justify-center items-center flex-col h-[145px] w-[170px] rounded-lg border border-gray-600 ">
-          <img src={img} alt="" />
-          <h2 className="font-Poppis font-[400] text-[1.6rem]">{title}</h2>
-        </div>
+      <div
+        onClick={() =>featchByCat(c) }
+        className={`${
+          selectedCat == c
+            ? "bg-[#DB4444] text-white border-none"
+            : ""
+        } cursor-default flex-1 flex justify-center py-6 rounded-lg border border-gray-600 `}
+      >
+        <h2 className="font-Poppis font-[400] text-[1.6rem]">{c}</h2>
       </div>
     );
   };
@@ -181,6 +197,16 @@ const Home = () => {
     );
   };
 
+  const featchByCat = async (c)=>{
+    await setselectedCat(c)
+    const rescatd = await fetch(
+      `https://fakestoreapi.com/products/category/${c}`
+    );
+
+    const catdatadata = await rescatd.json();
+    console.log(catdatadata);
+    await setcatsitem(catdatadata);
+  }
   const renderer = ({ days, hours, minutes, seconds }) => {
     return (
       <div className="flex gap-3">
@@ -248,43 +274,54 @@ const Home = () => {
             <hr className="h-[100%] w-1 bg-black" />
             <div className="w-[90%] px-40 pt-20 ">
               <Slider dots autoplay autoplaySpeed={2000} slidesToScroll={1}>
-              <div className="h-[284px] bg-[url(assets/hero_endframe__cvklg0xk3w6e_large%202.png)] bg-right bg-no-repeat bg-black bg-blend-difference relative w-[570px] py-20 pb-0 ">
-                <div className="absolute w-[50%] flex flex-col gap-4  bottom-8 font-Inter text-white left-20">
-                 <div className="flex items-center gap-5"><img src={iphone} alt="" /> <h1 className="font-[400] text-[2.4rem]">
-
-iPhone 14 Series
-</h1></div>
-                  <h1 className="font-[600] text-[4.8rem]">
-                  Up to 10% off Voucher </h1>
-                  <h3 className="font-[500] font-Poppis underline text-[1.6rem]">
-                    Shop Now
-                  </h3>
+                <div className="h-[284px] bg-[url(assets/hero_endframe__cvklg0xk3w6e_large%202.png)] bg-right bg-no-repeat bg-black bg-blend-difference relative w-[570px] py-20 pb-0 ">
+                  <div className="absolute w-[50%] flex flex-col gap-4  bottom-8 font-Inter text-white left-20">
+                    <div className="flex items-center gap-5">
+                      <img src={iphone} alt="" />{" "}
+                      <h1 className="font-[400] text-[2.4rem]">
+                        iPhone 14 Series
+                      </h1>
+                    </div>
+                    <h1 className="font-[600] text-[4.8rem]">
+                      Up to 10% off Voucher{" "}
+                    </h1>
+                    <h3 className="font-[500] font-Poppis underline text-[1.6rem]">
+                      Shop Now
+                    </h3>
+                  </div>
+                </div>{" "}
+                <div className="h-[284px] bg-[url(assets/hero_endframe__cvklg0xk3w6e_large%202.png)] bg-right bg-no-repeat bg-black bg-blend-difference relative w-[570px] py-20 pb-0 ">
+                  <div className="absolute w-[50%] flex flex-col gap-4  bottom-8 font-Inter text-white left-20">
+                    <div className="flex items-center gap-5">
+                      <img src={iphone} alt="" />{" "}
+                      <h1 className="font-[400] text-[2.4rem]">
+                        iPhone 14 Series
+                      </h1>
+                    </div>
+                    <h1 className="font-[600] text-[4.8rem]">
+                      Up to 10% off Voucher{" "}
+                    </h1>
+                    <h3 className="font-[500] font-Poppis underline text-[1.6rem]">
+                      Shop Now
+                    </h3>
+                  </div>
+                </div>{" "}
+                <div className="h-[284px] bg-[url(assets/hero_endframe__cvklg0xk3w6e_large%202.png)] bg-right bg-no-repeat bg-black bg-blend-difference relative w-[570px] py-20 pb-0 ">
+                  <div className="absolute w-[50%] flex flex-col gap-4  bottom-8 font-Inter text-white left-20">
+                    <div className="flex items-center gap-5">
+                      <img src={iphone} alt="" />{" "}
+                      <h1 className="font-[400] text-[2.4rem]">
+                        iPhone 14 Series
+                      </h1>
+                    </div>
+                    <h1 className="font-[600] text-[4.8rem]">
+                      Up to 10% off Voucher{" "}
+                    </h1>
+                    <h3 className="font-[500] font-Poppis underline text-[1.6rem]">
+                      Shop Now
+                    </h3>
+                  </div>
                 </div>
-              </div> <div className="h-[284px] bg-[url(assets/hero_endframe__cvklg0xk3w6e_large%202.png)] bg-right bg-no-repeat bg-black bg-blend-difference relative w-[570px] py-20 pb-0 ">
-                <div className="absolute w-[50%] flex flex-col gap-4  bottom-8 font-Inter text-white left-20">
-                 <div className="flex items-center gap-5"><img src={iphone} alt="" /> <h1 className="font-[400] text-[2.4rem]">
-
-iPhone 14 Series
-</h1></div>
-                  <h1 className="font-[600] text-[4.8rem]">
-                  Up to 10% off Voucher </h1>
-                  <h3 className="font-[500] font-Poppis underline text-[1.6rem]">
-                    Shop Now
-                  </h3>
-                </div>
-              </div> <div className="h-[284px] bg-[url(assets/hero_endframe__cvklg0xk3w6e_large%202.png)] bg-right bg-no-repeat bg-black bg-blend-difference relative w-[570px] py-20 pb-0 ">
-                <div className="absolute w-[50%] flex flex-col gap-4  bottom-8 font-Inter text-white left-20">
-                 <div className="flex items-center gap-5"><img src={iphone} alt="" /> <h1 className="font-[400] text-[2.4rem]">
-
-iPhone 14 Series
-</h1></div>
-                  <h1 className="font-[600] text-[4.8rem]">
-                  Up to 10% off Voucher </h1>
-                  <h3 className="font-[500] font-Poppis underline text-[1.6rem]">
-                    Shop Now
-                  </h3>
-                </div>
-              </div>
               </Slider>
             </div>
           </div>
@@ -328,11 +365,25 @@ iPhone 14 Series
               Browser By Category
             </h1>
           </div>
-          <div className="flex justify-between mb-20">
-            {cats.map((i) => {
-              return <CateList key={i.title} title={i.title} img={i.img} />;
+          <div className="flex gap-6 w-full justify-between mb-20">
+            {cats.map((c) => {
+              return <CateList key={c} c={c} />;
             })}
           </div>
+          <Slider variableWidth slidesToScroll={1}>
+            {catsitem.map((i) => {
+              return (
+                <NDiscountCard
+                  key={i.id}
+                  image={i.image}
+                  title={i.title}
+                  price={i.price + 20}
+                  netprice={i.price}
+                  stars={i.rating.count}
+                />
+              );
+            })}
+          </Slider>
         </section>
         <section>
           <div className="flex items-center gap-[16px]">
