@@ -6,13 +6,14 @@ import Cart from './pages/Cart'
 import CheckoutPage from './pages/CheckoutPage'
 import Contact from './pages/Contact'
 import Home from './pages/Home'
+import NotFound from './pages/NotFound'
 import WishList from './pages/WishList'
 
 
 const App = () => {
 
   return (
-   <Contact />
+   <NotFound />
   )
 }
 
