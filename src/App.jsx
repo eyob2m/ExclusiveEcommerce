@@ -1,12 +1,12 @@
 
 import './index.css'
+import Cart from './pages/Cart'
 
-import WishList from './pages/WishList'
 
 const App = () => {
 
   return (
-   <WishList />
+   <Cart />
   )
 }
 
