@@ -39,7 +39,7 @@ const Header = ({page}) => {
 
             <input
               className="text-[1.59984rem] bg-transparent focus:border-none focus:outline-none"
-              placeholder="What are you lokking for"
+              placeholder="What are you looking for"
               type="text"
             />
           </div>

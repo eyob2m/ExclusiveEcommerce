@@ -9,7 +9,7 @@ const cartSlice = createSlice({
              state.push(action.payload)
         },
         reset: (state)=>{
-            state = []
+           return []
         }
     }
 })

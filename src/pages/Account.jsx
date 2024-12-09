@@ -1,5 +1,7 @@
+import { useSelector } from "react-redux";
 
 const Account = () => {
+    const user = useSelector(state=>state.user)
   return (
     <div>
     
@@ -39,17 +41,17 @@ const Account = () => {
             <div className="flex gap-20  justify-between">
             <div className="font-Poppis w-full flex flex-col gap-6 text-[1.6rem] font-[400] opacity-70">
                 <h1>First Name</h1>
-                <input placeholder="Eyob" className="bg-[#F5F5F5] px-3 py-4" type="text" />
+                <input defaultValue={user.name ?user.name : null} placeholder="Eyob" className="bg-[#F5F5F5] px-3 py-4" type="text" />
             </div>
             <div className="font-Poppis w-full flex flex-col gap-6 text-[1.6rem] font-[400] opacity-70">
                 <h1>Last Name</h1>
-                <input placeholder="Betemariam" className="bg-[#F5F5F5] px-3 py-4" type="text" />
+                <input  placeholder="Betemariam" className="bg-[#F5F5F5] px-3 py-4" type="text" />
             </div>
             </div>
             <div className="flex gap-20 w-full justify-between">
             <div className="font-Poppis w-full flex flex-col gap-6 text-[1.6rem] font-[400] opacity-70">
                 <h1>Email</h1>
-                <input placeholder="eyob2etemariam@gmail.com" className="bg-[#F5F5F5] px-3 py-4" type="text" />
+                <input defaultValue={user.email ?user.email : null} placeholder="eyob2etemariam@gmail.com" className="bg-[#F5F5F5] px-3 py-4" type="text" />
             </div>
             <div className="font-Poppis w-full flex flex-col gap-6 text-[1.6rem] font-[400] opacity-70">
                 <h1>Address</h1>

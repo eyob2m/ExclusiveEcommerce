@@ -9,6 +9,7 @@ import { useSignUpMutation } from '../feature/auth/signupSlice'
 import { useDispatch} from 'react-redux'
 import { loggedin } from '../feature/auth/login'
 import toast from 'react-hot-toast'
+import { setUser } from '../feature/user'
 
 const SignUp = () => {
 
@@ -26,6 +27,7 @@ await signUp(data1)
 console.log({"Your Information": data1})
 
 await dispatch(loggedin(true))
+await dispatch(setUser(data1))
 navigate('/')
 toast.success(`Welcome ${data1.name}, You have Created new Account`,{position: "top-left",duration: 4000})
 

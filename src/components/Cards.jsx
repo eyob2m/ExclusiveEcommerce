@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { addToCart } from "../feature/cart";
 import { useDispatch, useSelector} from "react-redux";
 import toast from "react-hot-toast";
+import { addTowishlist, removeFromWishlist } from "../feature/wishlist";
 
 export const MainCard = ({ id,discount, image, title, price, netprice, stars }) => {
   const loggedIn = useSelector(state=>state.login)
@@ -24,10 +25,10 @@ export const MainCard = ({ id,discount, image, title, price, netprice, stars }) 
           </div>}
           <div className="absolute  top-4 right-4 font-Poppis  text-black py-1 rounded-md px-3 font-[400] text-[1.2rem ]">
             <div className="w-[24px] flex items-center justify-center h-[24px] bg-white rounded-full">
-              <AiOutlineHeart className="text-3xl" />
+              <AiOutlineHeart onClick={()=>{dispatch(addTowishlist({ id,discount, image, title, price, netprice, stars })); toast.success('Item added to wishlist',{position: 'top-left', duration: 4000})}} className="text-3xl" />
             </div>
             <div className="w-[24px] h-[24px] flex items-center justify-center bg-white rounded-full">
-              <AiOutlineEye className="text-3xl" />
+            <Link to={`/product/${id}`}>    <AiOutlineEye className="text-3xl" /></Link>
             </div>
           </div>
           <div onClick={()=>{loggedIn ? dispatch(addToCart({ id,discount, image, title, price, netprice, stars })): toast.error('Sign Up before adding to cart',{position: 'top-left', duration: 4000})}} className="opacity-15 z-50  duration-200 hover:opacity-100 absolute bottom-0 pb-2 bg-black w-full flex justify-center items-end text-white h-[20%] text-nowrap translate-x-[-50%]  left-[50%]">
@@ -75,7 +76,7 @@ export const MainCard = ({ id,discount, image, title, price, netprice, stars }) 
               <div  className="absolute  top-4 right-4 font-Poppis  text-black py-1 rounded-md px-3 font-[400] text-[1.2rem ]">
                 <div className="w-[24px] flex items-center justify-center h-[24px] bg-white rounded-full">
                 {
-                    wishlist ?  <MdDeleteOutline className="text-3xl" /> :<IoEyeOutline className="text-3xl" /> 
+                    wishlist ?  <MdDeleteOutline onClick={()=>{dispatch(removeFromWishlist(id)); toast.success('Item removed from wishlist',{position: 'top-left', duration: 4000})}} className="text-3xl" /> :<Link to={`/product/${id}`}> <IoEyeOutline className="text-3xl" /> </Link>
                 }
                 </div>
                
@@ -129,10 +130,10 @@ export const MainCard = ({ id,discount, image, title, price, netprice, stars }) 
               </div>
               <div className="absolute  top-4 right-4 font-Poppis  text-black py-1 rounded-md px-3 font-[400] text-[1.2rem ]">
                 <div className="w-[24px] flex items-center justify-center h-[24px] bg-white rounded-full">
-                  <AiOutlineHeart className="text-3xl" />
+                  <AiOutlineHeart onClick={()=>{dispatch(addTowishlist({id, stat, image, title, price, netprice, stars })); toast.success('Item added to wishlist',{position: 'top-left', duration: 4000})}} className="text-3xl" />
                 </div>
                 <div className="w-[24px] flex items-center justify-center h-[24px] bg-white rounded-full">
-                  <AiOutlineEye className="text-3xl" />
+                <Link to={`/product/${id}`}>  <AiOutlineEye className="text-3xl" /></Link> 
                 </div>
               </div>
               <div onClick={()=>{loggedIn ? dispatch(addToCart({id, stat, image, title, price, netprice, stars })): toast.error('Sign Up before adding to cart',{position: 'top-left', duration: 4000})}} className="opacity-15 z-50  duration-200 hover:opacity-100 absolute bottom-0 pb-2 bg-black w-full flex justify-center items-end text-white h-[20%] text-nowrap translate-x-[-50%]  left-[50%]">
