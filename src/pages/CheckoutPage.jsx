@@ -1,12 +1,27 @@
 
-import pc from "../icons/g27cq4-500x500 1.png";
-import js from "../icons/g92-2-500x500 1.png";
 import visa from "../icons/Visa.png";
 import pp from "../icons/image 33.png";
 import mc from "../icons/Mastercard.png";
 import bk from "../icons/Bkash.png";
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { reset } from "../feature/cart";
+
+
+
 
 const CheckoutPage = () => {
+  const navigate =   useNavigate()
+  const dispatch = useDispatch()
+  const place = ()=>{
+    dispatch(reset())
+    toast.success("Order Placed",{position: "top-left",duration: 4000})
+    navigate('/')
+    
+  }
+  const cart = useSelector(state=>state.cart)
+  
   return (
     <div>
     
@@ -47,25 +62,23 @@ const CheckoutPage = () => {
            </div>
         </div>
         <div className="w-[537px] flex flex-col gap-10">
-        <ul className="flex justify-between w-[400px]">
-            <li className="flex items-center gap-10">
-              {" "}
-              <img width={"54px"} height={"54px"} src={pc} alt="" />{" "}
-              <h2 className="">LCD Monitor</h2>
-            </li>
-            <li>$650</li>
-           
-           
-          </ul>
-          <ul className="flex justify-between w-[400px]">
-            <li className="flex items-center gap-10">
-              {" "}
-              <img src={js} width={"54px"} height={"54px"} alt="" />{" "}
-              <h2 className="">LCD Monitor</h2>
-            </li>
-           
-            <li>$650</li>
-          </ul>
+       
+          {
+            cart.map(c=>{
+              return (
+                <ul key={c.id} className="justify-between flex  w-[400px]">
+                <li className="flex flex-2 mr-20 items-center gap-10">
+                  {" "}
+                  <img src={c.image} width={"54px"} height={"54px"} alt="" />{" "}
+                  <h2 className="">{c.title}</h2>
+                </li>
+               
+                <li className="">${c.price}</li>
+              </ul>
+              )
+            })
+          }
+         
           
             <div className="flex w-[400px] justify-between">
                 <h1>Subtotal:</h1>
@@ -109,8 +122,8 @@ const CheckoutPage = () => {
               Apply Coupon
             </button>
           </div>
-              <button className="mb-5  w-fit  bg-[#DB4444] text-white border px-20 py-5  rounded-lg ">
-                Update Cart
+              <button onClick={()=>place()} className="mb-5  w-fit  bg-[#DB4444] text-white border px-20 py-5  rounded-lg ">
+                Place Order
               </button>
             </div> 
        

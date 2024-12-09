@@ -15,6 +15,7 @@ const ProductDetail = () => {
 
   const [product, setproduct] = useState({});
   const [items, setitems] = useState([]);
+  const [q, setq] = useState(1);
 
   useEffect(() => {
     window.scroll(0,0)
@@ -139,13 +140,13 @@ const ProductDetail = () => {
                     className="flex  w-[35%] items-center  gap-4"
                   >
                     <div className="flex rounded-md border-solid items-center text-white  border w-full border-black">
-                      <button className="bg-[#DB4444]  text-[2rem] flex-1">
+                      <button onClick={()=>q>1 && setq(q-1)} className="bg-[#DB4444]  text-[2rem] flex-1">
                         -
                       </button>
                       <h2 className="flex-1 text-black text-[2rem] text-center">
-                        1
+                        {q}
                       </h2>
-                      <button className="bg-[#DB4444] text-[2rem]  flex-1 ">
+                      <button onClick={()=>setq(q+1)} className="bg-[#DB4444] text-[2rem]  flex-1 ">
                         +
                       </button>
                     </div>

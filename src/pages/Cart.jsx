@@ -1,9 +1,12 @@
 
 import { Link } from "react-router-dom";
-import pc from "../icons/g27cq4-500x500 1.png";
-import js from "../icons/g92-2-500x500 1.png";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const Cart = () => {
+  const [quantity, setquan] = useState(1)
+  const cart = useSelector(state=>state.cart)
+  
   return (
     <div>
   
@@ -13,48 +16,40 @@ const Cart = () => {
           <span> Cart</span>
         </div>
         <section className="flex flex-col gap-20 text-[1.6rem]">
+
           <ul className="flex justify-between shadow-md ">
             <li>Product</li>
             <li>Price</li>
             <li>Quantity</li>
             <li>SubTotal</li>
-          </ul>
-          <ul className="flex justify-between shadow-md">
-            <li className="flex items-center gap-10">
-              {" "}
-              <img width={"54px"} height={"54px"} src={pc} alt="" />{" "}
-              <h2 className="">LCD Monitor</h2>
+            </ul>
+            {
+              cart.map(i=>{
+                return (
+                  <ul key={i.id} className="flex justify-between shadow-md">
+            <li className="flex flex-1 items-center gap-10">
+              
+              <img width={"54px"} height={"54px"} src={i.image} alt="" />{" "}
+              <h2 className="flex-">{i.title}</h2>
             </li>
-            <li>$650</li>
-            <li>
+            <li className="flex-1 ml-32">{i.price}</li>
+            <li className="flex-1">
               {" "}
               <input
+              onChange={(e)=>setquan(e.target.value)}
                 type="number"
                 defaultValue={1}
+                value={quantity}
                 min={1}
                 className="border rounded-md px-2 w-[50px] border-black"
               />{" "}
             </li>
-            <li>$650</li>
+            <li className="flex-1">${i.price*quantity}</li>
           </ul>
-          <ul className="flex justify-between shadow-md">
-            <li className="flex items-center gap-10">
-              {" "}
-              <img src={js} width={"54px"} height={"54px"} alt="" />{" "}
-              <h2 className="">LCD Monitor</h2>
-            </li>
-            <li>$650</li>
-            <li>
-              {" "}
-              <input
-                type="number"
-                defaultValue={1}
-                min={1}
-                className="border rounded-md px-2 w-[50px] border-black"
-              />{" "}
-            </li>
-            <li>$650</li>
-          </ul>
+                )
+              })
+            }
+      
           <div className="flex justify-between">
             <button className="border px-20 py-5 border-black rounded-lg ">
               Return to Shop

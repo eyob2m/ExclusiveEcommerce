@@ -13,6 +13,9 @@ import ProductDetail from './pages/ProductDetail'
 import SignUp from './pages/SignUp'
 import WishList from './pages/WishList'
 import Layout from './pages/Layout'
+import { Provider } from 'react-redux'
+import { store } from './app/store'
+import { Toaster } from 'react-hot-toast'
 
 
 
@@ -20,6 +23,8 @@ const App = () => {
 
   return (
     <BrowserRouter>
+    <Toaster />
+    <Provider store={store}>
     <Routes>
 
 <Route path='/' element={<Layout />}>
@@ -38,7 +43,7 @@ const App = () => {
 </Route>
 
     </Routes>
-
+    </Provider>
     </BrowserRouter>
   )
 }

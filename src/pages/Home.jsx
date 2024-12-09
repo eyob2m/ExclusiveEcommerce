@@ -18,6 +18,7 @@ import { MainCard } from "../components/Cards";
 
 const Home = () => {
 
+
   const [items, setitems] = useState([]);
   const [cats, setcats] = useState([]);
   const [catsitem, setcatsitem] = useState([]);
@@ -86,7 +87,7 @@ const Home = () => {
     );
 
     const catdatadata = await rescatd.json();
-    console.log(catdatadata);
+   
     await setcatsitem(catdatadata);
   }
   const renderer = ({ days, hours, minutes, seconds }) => {
